@@ -1,6 +1,5 @@
 ---
-title: about
-date: 2017-06-14 23:12:34
+title: 鸩酿
 ---
 
-# 关于我
+![](/img/role.jpg)
