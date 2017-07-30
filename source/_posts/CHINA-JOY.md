@@ -1,7 +1,7 @@
 ---
 title: CHINA JOY
 date: 2017-07-29 22:44:14
-tags: 日常
+tags: 心情
 ---
 
 ![](/img/china_joy/01.jpeg)
