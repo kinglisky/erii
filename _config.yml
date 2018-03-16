@@ -81,4 +81,4 @@ theme: brewski
 deploy:
   type: git
   repo: git@github.com:kinglisky/blog.git
-  branch: master
+  branch: gh-pages
