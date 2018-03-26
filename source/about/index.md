@@ -1,5 +1,5 @@
 ---
-title: 鸩酿
+title: 逐鲸
 ---
 
-![](/img/role.jpg)
+![零](/blog/img/role.jpg)
