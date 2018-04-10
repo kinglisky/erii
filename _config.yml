@@ -74,6 +74,16 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 # theme: lush
 theme: brewski
+theme_config:
+  copyright:
+    since: 2018
+    name: 芊野
+    url: https://nlush.com
+  menu:
+    Home: /
+    Archives: /archives
+    About: /about
+    GitHub: https://github.com/kinglisky
 
     
 # Deployment
