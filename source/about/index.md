@@ -2,4 +2,4 @@
 title: 逐鲸
 ---
 
-![零](/blog/img/role.jpg)
+![零](/img/role.jpg)

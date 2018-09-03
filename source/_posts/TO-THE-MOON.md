@@ -10,7 +10,7 @@ tags: 心情
 
 `“我也不知道，就是想去。”`
 
-![](/blog/img/to_the_moon/to_the_moon2.jpg)
+![](/img/to_the_moon/to_the_moon2.jpg)
 
 <!--more-->
 
@@ -58,9 +58,9 @@ tags: 心情
 
 特别喜欢 **TO THE MOON** 这款游戏，找了几张游戏的同人图。
 
-![](/blog/img/to_the_moon/to_the_moon1.jpg)
-![](/blog/img/to_the_moon/to_the_moon3.png)
-![](/blog/img/to_the_moon/to_the_moon4.jpg)
-![](/blog/img/to_the_moon/to_the_moon5.jpg)
+![](/img/to_the_moon/to_the_moon1.jpg)
+![](/img/to_the_moon/to_the_moon3.png)
+![](/img/to_the_moon/to_the_moon4.jpg)
+![](/img/to_the_moon/to_the_moon5.jpg)
 
 
