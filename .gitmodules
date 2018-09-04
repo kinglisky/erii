@@ -1,0 +1,3 @@
+[submodule "themes/hexo-theme-brewski"]
+	path = themes/hexo-theme-brewski
+	url = git@github.com:kinglisky/hexo-theme-brewski.git
