@@ -167,5 +167,47 @@ main();
 - 绑定一个数据源到绑定点
 - 通过绑定点向缓冲中存放数据
 
+主要梳理下创建缓存和绑定数据的操作
+
+```js
+// Create a buffer and put three 2d clip space points in it
+var positionBuffer = gl.createBuffer();
+
+// Bind it to ARRAY_BUFFER (think of it as ARRAY_BUFFER = positionBuffer)
+gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+var positions = [
+    0, 0,
+    0, 0.5,
+    0.7, 0,
+];
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+```
+
+这里的 `gl.ARRAY_BUFFER` 类似于 WebGL 内部的全局变量，将 `positionBuffer` 绑定到 `gl.ARRAY_BUFFER` 后面的对 `ARRAY_BUFFER` 其实就对 `positionBuffer` 的操作，有点类似 `ARRAY_BUFFER = positionBuffer`;
+
+而后的：
+
+```js
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+```
+
+其实就是往 `positionBuffer` 写入数据（顶点信息），`gl.ARRAY_BUFFER` 有点像代理，对 `gl.ARRAY_BUFFER` 的操作会映射到 `positionBuffer` 上。
 
 ## 2 渲染
+
+- 设置渲染视口
+- 清空画布
+- 使用上一步创建的着色器程序
+- 启用对应属性（声明的着色器变量）
+- 指定从缓冲中读取数据的方式
+- 指定绘制方式（点，线，三角形...）绘制
+
+注意点：
+
+canvas `width` `height` 与 css 样式设置的 `width` `height` 区别（类似 SVG 的视口）。
+
+WebGL 裁剪空间的 -1 -> +1 分别对应到 x 轴的 0 -> gl.canvas.width 和 y 轴的 0 -> gl.canvas.height。
+
+
+
