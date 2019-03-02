@@ -205,6 +205,19 @@ gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 
 注意点：
 
+一个隐藏信息是 `gl.vertexAttribPointer` 是将属性绑定到当前的 ARRAY_BUFFER，这里的操作类似于：
+
+```js
+gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset);
+```
+
+`positionAttributeLocation = ARRAY_BUFFER` 这里 positionAttributeLocation 绑定到当前的 ARRAY_BUFFER，
+
+而之前 `ARRAY_BUFFER = positionBuffer` ARRAY_BUFFER 实际是绑定了 positionBuffer，
+
+最终的结果类似：`positionAttributeLocation = positionBuffer`。
+
+
 canvas `width` `height` 与 css 样式设置的 `width` `height` 区别（类似 SVG 的视口）。
 
 WebGL 裁剪空间的 -1 -> +1 分别对应到 x 轴的 0 -> gl.canvas.width 和 y 轴的 0 -> gl.canvas.height。
