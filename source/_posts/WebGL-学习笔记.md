@@ -224,3 +224,29 @@ WebGL 裁剪空间的 -1 -> +1 分别对应到 x 轴的 0 -> gl.canvas.width 和
 
 
 
+## 3 webGL 坐标变换
+
+坐标的变化在顶点着色器中实现
+webGL 的坐标系范围之前提到过在 (-1, 1) 之间，和数学书上的自然坐标系很像（咱不讨论 Z 轴），中点是 (0,0)，上面为 Y 轴正负，左右 X 轴负正
+而屏幕的坐标系：左上角为 (0,0) 下为 Y 正轴，右为 X 正轴，所以为了符合屏幕坐标系，直接使用像素单位，需要做个坐标的转换
+
+具体操作如下，其实都是矩阵的变换
+
+```js
+attribute vec4 a_position;
+
+uniform vec2 u_resolution;
+
+void main() {
+    // u_resolution 标识当前屏幕分辨率（像素值）这里的操作将顶点输入的像素坐标转换成 （0.0  1.0）之间
+    vec2 zeroToOne = a_position.xy / u_resolution;
+
+    // convert from 0->1 to 0->2
+    vec2 zeroToTwo = zeroToOne * 2.0;
+
+    // convert from 0->2 to -1->+1 (clipspace)
+    vec2 clipSpace = zeroToTwo - 1.0;
+
+    gl_Position = vec4(clipSpace * vec2(1, -1), 0, 1);
+}
+```
