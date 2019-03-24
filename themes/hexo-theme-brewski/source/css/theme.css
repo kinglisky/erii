@@ -28,6 +28,7 @@ p {
   letter-spacing: -.01em;
   line-height: 1.8;
   margin: 1.2em 0;
+  word-wrap: break-word;
 }
 
 a,
