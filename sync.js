@@ -16,6 +16,7 @@ const client = new OSS({
     bucket: OSS_BUCKET,
     accessKeyId: OSS_ACCESS_KEY_ID,
     accessKeySecret: OSS_ACCESS_KEY_SECRET,
+    timeout: 
 });
 
 function getFiles() {
@@ -31,7 +32,7 @@ function getFiles() {
 }
 
 function upload(file) {
-    return client.put(file.replace('public/', ''), `./${file}`)
+    return client.put(file.replace('public/', ''), `./${file}`, { timeout: 120000 })
         .then(res => {
             const url = `${ORIGIN}/${res.name}`
             console.log(`SYNC SUCCESS: ${url}`);
@@ -39,8 +40,25 @@ function upload(file) {
         });
 }
 
+function uploadFiles(files) {
+    const failure = [];
+    return files.reduce((promise, file) => {
+        return promise.then(() => {
+            return upload(file).catch(error => {
+                console.log('UPLOAD ERROR', file, error);
+                failure.push(file);
+            });
+        });
+    }, Promise.resolve()).then(() => failure);
+}
+
 (async function main() {
     const files = await getFiles();
-    await Promise.all(files.map(file => upload(file)));
+    let failure = await uploadFiles(files);
+    if (failure.length) {
+        console.log('RETRY SYNC!');
+        failure = await uploadFiles(failure);
+        console.log('RETRY SYNC FAILURE!');
+    }
     console.log('SYNC DONE !');
 })();
