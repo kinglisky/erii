@@ -16,7 +16,7 @@ const client = new OSS({
     bucket: OSS_BUCKET,
     accessKeyId: OSS_ACCESS_KEY_ID,
     accessKeySecret: OSS_ACCESS_KEY_SECRET,
-    timeout: 
+    timeout: 120000,
 });
 
 function getFiles() {
